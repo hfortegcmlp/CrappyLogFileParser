@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CrappyLogFileParser
@@ -21,6 +22,31 @@ namespace CrappyLogFileParser
                           let errorTypes = GetErrorType(failure.Errors)
                           from errorType in errorTypes
                           select errorType).GroupBy(e => e);
+
+            var theErrors =
+                exposureConsumeErrors.Where(x => x.Errors[0].StartsWith("There are no financial statements available"))
+                    .ToList();
+            var funds = new List<int>();
+            foreach (var error in theErrors)
+            {
+                var potentialFunds = error.Errors[0].Split(new[] {"\r\n"}, StringSplitOptions.None);
+                foreach (var potentialFund in potentialFunds)
+                {
+                    int fund = 0;
+                    if(int.TryParse(potentialFund, out fund))
+                    {
+                        if (!funds.Contains(fund))
+                        {
+                            funds.Add(fund);
+                        }
+                    }
+                }
+            }
+
+            System.Console.WriteLine("There are no financial statements for the following funds  {0}", string.Join(",", funds.Select(n => n.ToString()).ToArray()));
+            System.Console.WriteLine();
+            System.Console.WriteLine();
+
             foreach (var error in errors)
             {
                 System.Console.WriteLine("  {0}({1})", error.Key, error.Count());

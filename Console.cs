@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 
 namespace CrappyLogFileParser
@@ -18,6 +19,7 @@ namespace CrappyLogFileParser
                 {
                     Errors.AddRange(logEntry);
                 }
+
                 System.Console.WriteLine("Finished processing error log.");
                 System.Console.WriteLine("");
                 System.Console.WriteLine("");
@@ -26,6 +28,7 @@ namespace CrappyLogFileParser
                 stream.Close();
             }
 
+            //back off for a while - blood testing
             System.Console.WriteLine("Press Any Key To Close...");
             System.Console.ReadLine();
         }

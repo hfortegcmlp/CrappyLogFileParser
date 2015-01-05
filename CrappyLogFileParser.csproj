@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="Console.cs" />
     <Compile Include="ErrorVisualizer.cs" />
-    <Compile Include="ExposureConsumeError.cs" />
     <Compile Include="HoldingsConsumeError.cs" />
     <Compile Include="LogFileParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

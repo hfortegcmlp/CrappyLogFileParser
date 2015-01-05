@@ -70,26 +70,6 @@ namespace CrappyLogFileParser
                 error.PortfolioId = logEntry.Substring(startPosition, endPosition - startPosition);
             else
                 System.Console.WriteLine("Failed to find Portfolio Id for failure");
-
-            //pattern = "ID=";
-            //startPosition = logEntry.LastIndexOf(pattern, StringComparison.InvariantCultureIgnoreCase) + pattern.Length;
-            //endPosition = logEntry.LastIndexOf(".", StringComparison.InvariantCultureIgnoreCase);
-            //if (startPosition > 0 && endPosition > 0)
-            //    error.MessageId = logEntry.Substring(startPosition, endPosition - startPosition);
-            //else
-            //    System.Console.WriteLine("Failed to find Message Id for failure");
-
-            //pattern = "Failed to process message\r\n";
-            //startPosition = logEntry.IndexOf(pattern, StringComparison.InvariantCultureIgnoreCase) + pattern.Length;
-            //endPosition = logEntry.IndexOf("{", startPosition, StringComparison.InvariantCultureIgnoreCase);
-            //if (startPosition > 0 && endPosition > 0)
-            //{
-            //    var errors = logEntry.Substring(startPosition, endPosition - startPosition);
-            //    error.Errors = errors.Split(new[] {Environment.NewLine}, StringSplitOptions.None);
-            //}
-            //else
-            //    System.Console.WriteLine("Failed to find Errors for failure");
-
             return error;
         }
     }
